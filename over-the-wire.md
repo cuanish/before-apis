@@ -1,0 +1,91 @@
+### XML-RPC Request
+
+```
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>get_customer</methodName>
+  <params>
+    <param>
+      <value><int>101</int></value>
+    </param>
+  </params>
+</methodCall>
+```
+
+### XML-RPC Response
+
+```
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+          <member>
+            <name>name</name>
+            <value><string>John Doe</string></value>
+          </member>
+          <member>
+            <name>balance</name>
+            <value><double>1500.0</double></value>
+          </member>
+        </struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+```
+
+### HTTP Request
+
+```
+POST /RPC2 HTTP/1.1
+Host: localhost:8000
+User-Agent: xmlrpclib.py/1.0.1 (by www.pythonware.com)
+Content-Type: text/xml
+Content-Length: 192
+
+<?xml version="1.0"?>
+<methodCall>
+  <methodName>get_customer</methodName>
+  <params>
+    <param>
+      <value><int>101</int></value>
+    </param>
+  </params>
+</methodCall>
+```
+
+### HTTP Response
+
+```
+HTTP/1.1 200 OK
+Server: BaseHTTP/0.6 Python/3.9.0
+Date: Tue, 30 Jan 2024 10:15:30 GMT
+Content-Type: text/xml
+Content-Length: 425
+
+<?xml version="1.0"?>
+<methodResponse>
+  <params>
+    <param>
+      <value>
+        <struct>
+          <member>
+            <name>name</name>
+            <value><string>John Doe</string></value>
+          </member>
+          <member>
+            <name>email</name>
+            <value><string>john@example.com</string></value>
+          </member>
+          <member>
+            <name>balance</name>
+            <value><double>1500.0</double></value>
+          </member>
+        </struct>
+      </value>
+    </param>
+  </params>
+</methodResponse>
+```
